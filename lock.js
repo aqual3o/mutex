@@ -5,10 +5,12 @@ class Lock {
 	}
 
 	acquire () {
-		new Promise (function (resolve, reject) {
-			if (!this.locked) {
-				this.locked = true;
-				resolve (this.release);
+		let __this = this;
+
+		return new Promise (function (resolve, reject) {
+			if (!__this.locked) {
+				__this.locked = true;
+				resolve (__this.release);
 				return;
 			}
 
@@ -17,7 +19,7 @@ class Lock {
 			 * push request to an array,
 			 * will be resolved at a later time when someone has released it */
 			let request = {resolve, reject};
-			this.pendingRequests.push (request);
+			__this.pendingRequests.push (request);
 		});
 	}
 
