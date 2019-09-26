@@ -10,7 +10,7 @@ Creation and management of the lock is done by user
 Raise a request for mutex. Returns a native JS promise. Wait for it to resolve before doing anything.
 
 #### release ()
-Releases the lock once the task is done for other threads/tasks to do acquire it and perform opeartions on shared resource. __ALWAYS__ release the lock wether task is scuccessfully done or not, otherwise it'll create a deadlock.
+Releases the lock once the task is done for other threads/tasks to acquire it and perform operations on shared resource. __ALWAYS__ release the lock wether task is scuccessfully done or not, otherwise it'll create a deadlock.
 
 ### Basic Example
 
@@ -25,7 +25,8 @@ async function main () {
 		 * Do work on concurrent resource 
 		 *
 		 * await getResource ()
-		 * await modifyResource ()*/
+		 * await modifyResource ()
+		 */
 	}
 	catch (err) {
 		console.error ({err}, 'error doing stuff');
@@ -38,5 +39,9 @@ async function main () {
 	mutex.release ();
 }
 
+/*
+ * Calling it twice to simulate concurrent situation
+ */
+main ();
 main ();
 ```
