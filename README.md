@@ -6,10 +6,10 @@ Creation and management of the lock is done by user
 
 ### API
 
-#### acquire
+#### acquire ()
 Raise a request for mutex. Returns a native JS promise. Wait for it to resolve before doing anything.
 
-#### release
+#### release ()
 Releases the lock once the task is done for other threads/tasks to do acquire it and perform opeartions on shared resource. __ALWAYS__ release the lock wether task is scuccessfully done or not, otherwise it'll create a deadlock.
 
 ### Basic Example
